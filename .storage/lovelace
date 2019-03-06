@@ -1,0 +1,133 @@
+{
+    "data": {
+        "config": {
+            "title": "Home",
+            "views": [
+                {
+                    "badges": [
+                        "sun.sun",
+                        "sensor.dark_sky_humidity",
+                        "sensor.dark_sky_icon",
+                        "sensor.dark_sky_temperature",
+                        "device_tracker.mobiel_corjan"
+                    ],
+                    "cards": [
+                        {
+                            "entity": "weather.weer",
+                            "name": "Weer",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "entity": "sensor.postnl",
+                            "name": "Post",
+                            "type": "sensor",
+                            "unit": "pakketjes/brieven"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.mobiel_corjan"
+                                }
+                            ],
+                            "type": "map"
+                        }
+                    ],
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.hanglamp"
+                                },
+                                {
+                                    "entity": "light.hoeklamp"
+                                },
+                                {
+                                    "entity": "light.vitrinekast"
+                                }
+                            ],
+                            "title": "Woonkamer",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bijkeuken"
+                                }
+                            ],
+                            "title": "Bijkeuken",
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "Begane grond"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.bedlampje"
+                                },
+                                {
+                                    "entity": "light.deken"
+                                }
+                            ],
+                            "title": "Slaapkamer Corjan",
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "Eerste verdieping"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.fritzbox_max_downstream",
+                                            "name": "Max download",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.fritzbox_max_upstream",
+                                            "name": "Max upload",
+                                            "type": "sensor"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "sensor.fritzbox_current_downstream",
+                                            "name": "Huidig download",
+                                            "type": "sensor"
+                                        },
+                                        {
+                                            "entity": "sensor.fritzbox_current_upstream",
+                                            "name": "Huidig upload",
+                                            "type": "sensor"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        }
+                    ],
+                    "panel": false,
+                    "title": "Netwerk"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

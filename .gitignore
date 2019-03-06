@@ -1,0 +1,20 @@
+# Folders
+.cloud/**
+.storage/**
+deps/**
+tts/**
+
+# Files
+.HA_VERSION
+secrets.yaml
+mysensors1.pickle
+known_devices.yaml
+configuration.yaml.save
+home-assistant.log
+home-assistant_v2.db
+
+# File types
+home-assistant_v2.*
+
+# Include
+!.storage/lovelace

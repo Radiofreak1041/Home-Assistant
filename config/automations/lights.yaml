@@ -1,0 +1,73 @@
+### GROUNDFLOOR ########################################
+## Living room
+# Turn lights on in living room at sunset
+- id: all_lights_on_living_room_sunset
+  alias: Turn all lights in living room on at sunset
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:15:00
+  condition: []
+  action:
+  - delay:
+      minutes: "{{ (25 - 0.25 * states('sensor.dark_sky_cloud_coverage') | float) | int}}"
+  - service: light.turn_on
+    data:
+      entity_id: light.hoeklamp
+  - service: light.turn_on
+    data:
+      entity_id: light.hanglamp
+  - service: light.turn_on
+    data:
+      entity_id: light.vitrinekast
+
+# Turn lights off at night
+- id: all_lights_off_at_night
+  alias: Turn all lights in living room off at night
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.hoeklamp
+  - service: light.turn_off
+    data:
+      entity_id: light.hanglamp
+  - service: light.turn_off
+    data:
+      entity_id: light.vitrinekast
+
+## Scullery
+# Turn light scullery on when opening its door    
+- id: light_scullery_on_when_opening_door
+  alias: Turn the light in the scullery on when the door is opened
+  trigger:
+  - entity_id: binary_sensor.deur_bijkeuken_10_1
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - after: sunset
+    condition: sun
+  action:
+  - data:
+      entity_id: light.bijkeuken
+    service: light.turn_on
+
+# Turn light scullery off when closing its door
+- id: light_scullery_off_when_closing_door
+  alias: Turn the light in the scullery off when the door is closed
+  trigger:
+  - entity_id: binary_sensor.deur_bijkeuken_10_1
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - after: sunset
+    condition: sun
+  action:
+  - delay: '00:00:15'
+  - data:
+      entity_id: light.bijkeuken
+    service: light.turn_off

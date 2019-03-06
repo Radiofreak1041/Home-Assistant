@@ -1,0 +1,60 @@
+- platform: rflink
+  automatic_add: false
+ 
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+
+- platform: darksky
+  api_key: !secret darksky_api_key
+  forecast:
+    - 0
+  monitored_conditions:
+    - summary
+    - icon
+    - temperature
+    - cloud_cover
+    - humidity
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+
+- platform: postnl
+  username: !secret POSTNL_USERNAME
+  password: !secret POSTNL_PASSWORD
+
+- platform: fritzbox_netmonitor
+
+- platform: fritzbox_callmonitor
+  name: telefoon
+  username: !secret fritz_box_username
+  password: !secret fritz_box_password
+  prefixes:
+    - '+31'
+    - '010'
+    - '0180'
+
+# Fritzbox
+- platform: template
+  sensors:
+    fritzbox_current_upstream:
+      friendly_name: "Fritzbox current upstream"
+      unit_of_measurement: 'Mbit/s'
+      value_template: "{{ state_attr('sensor.fritz_netmonitor', 'transmission_rate_up')*8/1000000 }}"
+    
+    fritzbox_current_downstream:
+      friendly_name: "Fritzbox current downstream"
+      unit_of_measurement: 'Mbit/s'
+      value_template: "{{ state_attr('sensor.fritz_netmonitor', 'transmission_rate_down')*8/1000000 }}"
+      
+    fritzbox_max_upstream:
+      friendly_name: "Fritzbox maximum upstream"
+      unit_of_measurement: 'Mbit/s'
+      value_template: "{{ state_attr('sensor.fritz_netmonitor', 'max_byte_rate_up')*8/1000000 }}"
+      
+    fritzbox_max_downstream:
+      friendly_name: "Fritzbox maximum downstream"
+      unit_of_measurement: 'Mbit/s'
+      value_template: "{{ state_attr('sensor.fritz_netmonitor', 'max_byte_rate_down')*8/1000000 }}"

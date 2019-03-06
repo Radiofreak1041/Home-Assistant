@@ -1,0 +1,26 @@
+### RFLINK ##################################
+- platform: rflink
+  automatic_add: true
+  devices:
+    ### CORJAN BEDROOM ######################
+    newkaku_012f75ee_1:
+      name: Bedlampje
+      type: switchable
+    newkaku_012f75ee_3:
+      name: Deken
+      type: switchable
+    ### GROUNDFLOOR #########################
+    # Living room
+    newkaku_007b58c6_2:
+      name: Vitrinekast
+      type: switchable
+    newkaku_007b58c6_3:
+      name: Hoeklamp
+      type: switchable
+    newkaku_007b58c6_5:
+      name: Hanglamp
+      type: switchable
+    # Scullery
+    newkaku_007b58c6_6:
+      name: Bijkeuken
+      type: switchable
